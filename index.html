@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gym Username Generator</title>
+<meta name="description" content="Generate gym and fitness usernames instantly">
+</head>
+
+<body>
+
+<h1>Gym Username Generator</h1>
+
+<button onclick="generate()">Generate Username</button>
+
+<p id="result"></p>
+
+<script>
+const names = [
+"iron_beast", "fit_alpha", "muscle_mode", "gym_king",
+"power_lifter", "beast_mode_on", "fit_hustler",
+"alpha_strength", "iron_mind", "gym_warrior"
+];
+
+function generate() {
+  const random = names[Math.floor(Math.random() * names.length)];
+  document.getElementById("result").innerText = random;
+}
+</script>
+
+</body>
+</html>
