@@ -1,39 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Gym Username Generator</title>
-<meta name="description" content="Generate gym and fitness usernames instantly">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Generate unique usernames for Instagram, gaming, and more — styled your way." />
+  <title>Namewave — Username Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
+  <div class="bg-gradient" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
 
-<h1>Gym Username Generator</h1>
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">Namewave</span>
+    </div>
+    <p class="tagline">Smart usernames for every platform</p>
+  </header>
 
-<button onclick="generate()">Generate Username</button>
+  <main class="main">
+    <section class="card hero-card" aria-labelledby="hero-title">
+      <h1 id="hero-title" class="hero-title">Turn your idea into a handle</h1>
+      <p class="hero-sub">Describe what you need — we blend keywords with style presets and generate ten unique options, instantly.</p>
 
-<p id="result"></p>
+      <form class="form" id="gen-form" novalidate>
+        <label for="prompt" class="label">What do you need a username for?</label>
+        <textarea
+          id="prompt"
+          name="prompt"
+          class="input input-textarea"
+          rows="3"
+          placeholder="e.g. Instagram fitness account, dark aesthetic, minimal vibe"
+          autocomplete="off"
+          spellcheck="true"
+        ></textarea>
 
-<script>
-const names = [
-"iron_beast", "fit_alpha", "muscle_mode", "gym_king",
-"power_lifter", "beast_mode_on", "fit_hustler",
-"alpha_strength", "iron_mind", "gym_warrior"
-];
+        <div class="row">
+          <div class="field">
+            <label for="style" class="label">Style</label>
+            <div class="select-wrap">
+              <select id="style" name="style" class="input input-select">
+                <option value="aesthetic">Aesthetic</option>
+                <option value="dark">Dark</option>
+                <option value="luxury">Luxury</option>
+                <option value="random">Random</option>
+              </select>
+            </div>
+          </div>
+          <div class="field actions-primary">
+            <button type="submit" class="btn btn-primary" id="btn-generate">
+              <span class="btn-label">Generate</span>
+              <span class="btn-shine" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+      </form>
 
-function generate() {
-  const random = names[Math.floor(Math.random() * names.length)];
-  document.getElementById("result").innerText = random;
-}
-  
-<h2>More pages</h2>
+      <div class="loading-wrap" id="loading-wrap" hidden>
+        <div class="loading-bar" role="status" aria-live="polite">
+          <span class="loading-fill" id="loading-fill"></span>
+        </div>
+        <p class="loading-text" id="loading-text">Crafting handles…</p>
+      </div>
 
-<ul>
-<li><a href="gym-girl-usernames.html">Gym usernames for girls</a></li>
-<li><a href="aesthetic-gym-usernames.html">Aesthetic gym usernames</a></li>
-<li><a href="fitness-usernames.html">Fitness usernames</a></li>
-</ul>
+      <section class="results" id="results-section" hidden>
+        <div class="results-head">
+          <h2 class="results-title">Your usernames</h2>
+          <button type="button" class="btn btn-ghost" id="btn-more">Generate more</button>
+        </div>
+        <ul class="username-list" id="username-list" aria-live="polite"></ul>
+      </section>
+    </section>
 
-</script>
+    <section class="card hints-card" aria-label="How it works">
+      <h2 class="hints-title">How Namewave thinks</h2>
+      <ul class="hints-list">
+        <li>Reads your prompt for topics like fitness, crypto, gaming, or aesthetic vibes.</li>
+        <li>Applies your style: soft aesthetics, bold dark tones, or refined luxury.</li>
+        <li>Outputs clean handles you can copy — no signup required.</li>
+      </ul>
+    </section>
+  </main>
 
+  <footer class="site-footer">
+    <p>Built for GitHub Pages · Pure HTML, CSS &amp; JavaScript</p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
